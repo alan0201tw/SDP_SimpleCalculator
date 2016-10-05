@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<!--
+
+阿哩今罵西勒跨沙小 ┴─┴︵╰（‵□′╰
+Please change to decimal (base = 10) if you need calculation , otherwise it'll crash
+
+-->
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel='stylesheet prefetch' href='http://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0-rc.5/angular-material.css'>
+    <link rel='stylesheet prefetch' href='http://material.angularjs.org/1.1.0-rc.5/docs.css'>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Calculator</title>
+    </head>
+    <body>
+        <html lang="en" ng-app="MyApp">
+        <body layout="row">
+            <div layout="column" class="relative" layout-fill role="main">
+
+                <md-toolbar ng-show="!showSearch">
+                    <div class="md-toolbar-tools">
+                        <h3>
+                            Simple Calculator UI with Version Control by Fatshih
+                        </h3>
+                        <span flex></span>
+                    </div>
+                </md-toolbar>
+
+                <div ng-controller="SelectedTextController" class="md-padding selectdemoSelectedText" ng-cloak="">
+                    <!-- ///////////////////////////Working Space////////////////// -->
+
+                    <!-- Debug Space -->
+
+                    <label>DEBUG TEXT : {{debugging_text}} </label>
+
+                    <!-- END of Debug Space -->
+
+
+                    <div flex-gt-sm>
+                        <div layout = "row" flex-gt-sm>
+                            <md-input-container>
+                                <label>Value</label>
+                                <input ng-model="input_value" type="text"
+                                onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                </input>
+                            </md-input-container>
+
+                        <md-button class="md-raised md-primary forcebutton" ng-click="set_value(null)">Clear</md-button>
+                        </div>
+
+                        <div layout = "row" flex-gt-sm>
+                            <md-button class="md-raised md-primary widebutton" ng-click="change_base()">
+                                View in other base
+                            </md-button>
+                            <input ng-model="new_base" placeholder="base"></input>
+                            <label>
+                                in base {{new_base}} , value {{value_when_change_base}} is presented as {{value_in_new_base}}
+                            </label>
+                        </div>
+                </div>
+
+                <div layout = "column">
+                    <div layout = "row">
+                        <md-button class="md-raised" ng-click="input_num(7)">7</md-button>
+                        <md-button class="md-raised" ng-click="input_num(8)">8</md-button>
+                        <md-button class="md-raised" ng-click="input_num(9)">9</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(3)">/</md-button>
+                    </div>
+
+                    <div layout = "row">
+                        <md-button class="md-raised" ng-click="input_num(4)">4</md-button>
+                        <md-button class="md-raised" ng-click="input_num(5)">5</md-button>
+                        <md-button class="md-raised" ng-click="input_num(6)">6</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(2)">*</md-button>
+                    </div>
+
+                    <div layout = "row">
+                        <md-button class="md-raised" ng-click="input_num(1)">1</md-button>
+                        <md-button class="md-raised" ng-click="input_num(2)">2</md-button>
+                        <md-button class="md-raised" ng-click="input_num(3)">3</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(1)">-</md-button>
+                    </div>
+
+                    <div layout = "row">
+                        <md-button class="md-raised widebutton" ng-click="input_num(0)">0</md-button>
+                        <md-button class="md-raised" ng-click="input_num(10)">.</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(0)">+</md-button>
+                        <md-button class="md-raised md-primary" ng-click="calculate()">=</md-button>
+                    </div>
+                </div>
+
+
+
+                <!-- ///////////////////////////Working Space////////////////// -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+</body>
+</html>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
+<script src='http://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0-rc.5/angular-material.js'></script>
+<script src="js/index.js"></script>
+</body>
+</html>
