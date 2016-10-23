@@ -29,7 +29,7 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
         <body layout="row">
             <div layout="column" class="relative" layout-fill role="main">
 
-                <md-toolbar ng-show="!showSearch" md-colors="{background: 'red'}">
+                <md-toolbar ng-show="!showSearch">
                     <div class="md-toolbar-tools">
                         <h3>
                             Simple Calculator UI with Version Control by Fatshih
@@ -57,13 +57,13 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
                                 </input>
                             </md-input-container>
 
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary forcebutton" ng-click="clear()">
+                        <md-button class="md-raised md-primary forcebutton" ng-click="clear()">
                             Clear
                         </md-button>
                         </div>
                         <div layout = "row" flex-gt-sm>
                             <!--
-                            <md-button md-colors="{background: 'red'}" class="md-raised md-primary widebutton" ng-click="change_base()">
+                            <md-button  class="md-raised md-primary widebutton" ng-click="change_base()">
                                 View in other base
                             </md-button>
 -->
@@ -84,37 +84,37 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
 
                 <div layout = "column">
                     <div layout = "row">
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="clear()">C</md-button>
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="back()"><</md-button>
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="add_operator(4)">%</md-button>
+                        <md-button class="md-raised md-primary" ng-click="clear()">C</md-button>
+                        <md-button class="md-raised md-primary" ng-click="back()"><</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(4)">%</md-button>
                     </div>
 
                     <div layout = "row">
                         <md-button class="md-raised" ng-click="input_num(7)">7</md-button>
                         <md-button class="md-raised" ng-click="input_num(8)">8</md-button>
                         <md-button class="md-raised" ng-click="input_num(9)">9</md-button>
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="add_operator(3)">/</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(3)">/</md-button>
                     </div>
 
                     <div layout = "row">
                         <md-button class="md-raised" ng-click="input_num(4)">4</md-button>
                         <md-button class="md-raised" ng-click="input_num(5)">5</md-button>
                         <md-button class="md-raised" ng-click="input_num(6)">6</md-button>
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="add_operator(2)">*</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(2)">*</md-button>
                     </div>
 
                     <div layout = "row">
                         <md-button class="md-raised" ng-click="input_num(1)">1</md-button>
                         <md-button class="md-raised" ng-click="input_num(2)">2</md-button>
                         <md-button class="md-raised" ng-click="input_num(3)">3</md-button>
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="add_operator(1)">-</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(1)">-</md-button>
                     </div>
 
                     <div layout = "row">
                         <md-button class="md-raised widebutton" ng-click="input_num(0)">0</md-button>
                         <md-button class="md-raised" ng-click="input_num(10)">.</md-button>
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="add_operator(0)">+</md-button>
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="calculate()">=</md-button>
+                        <md-button class="md-raised md-primary" ng-click="add_operator(0)">+</md-button>
+                        <md-button class="md-raised md-primary" ng-click="calculate()">=</md-button>
                     </div>
                 </div>
 
