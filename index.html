@@ -52,28 +52,43 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
                         <div layout = "row" flex-gt-sm>
                             <md-input-container>
                                 <label>Value</label>
-                                <input ng-model="input_value" type="text"
+                                <input ng-change="on_input_change()" ng-model="input_value" type="text"
                                 onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                                 </input>
                             </md-input-container>
 
-                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary forcebutton" ng-click="set_value(null)">
+                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary forcebutton" ng-click="clear()">
                             Clear
                         </md-button>
                         </div>
-
                         <div layout = "row" flex-gt-sm>
+                            <!--
                             <md-button md-colors="{background: 'red'}" class="md-raised md-primary widebutton" ng-click="change_base()">
                                 View in other base
                             </md-button>
+-->
+                            <div layout = "column" flex-gt-sm>
+                            <label>HEX {{hex}}</label>
+                            <label>DEC {{dec}}</label>
+                            <label>OCT {{oct}}</label>
+                            <label>BIN {{bin}}</label>
+                        </div>
+                            <!--
                             <input ng-model="new_base" placeholder="base"></input>
                             <label>
                                 in base {{new_base}} , value {{value_when_change_base}} is presented as {{value_in_new_base}}
                             </label>
+                        -->
                         </div>
                 </div>
 
                 <div layout = "column">
+                    <div layout = "row">
+                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="clear()">C</md-button>
+                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="back()"><</md-button>
+                        <md-button md-colors="{background: 'red'}" class="md-raised md-primary" ng-click="add_operator(4)">%</md-button>
+                    </div>
+
                     <div layout = "row">
                         <md-button class="md-raised" ng-click="input_num(7)">7</md-button>
                         <md-button class="md-raised" ng-click="input_num(8)">8</md-button>
