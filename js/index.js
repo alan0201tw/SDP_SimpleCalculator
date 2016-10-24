@@ -10,8 +10,6 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
     $scope.bin;
 
     $scope.new_base = 10;
-    $scope.value_when_change_base;
-    $scope.value_in_new_base;
 
     $scope.debugging_text = "No text";
 
@@ -106,23 +104,7 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
         }
         $scope.on_input_change();
     }
-/*
-    $scope.change_base = function() {
-        try{
-            var num = parseInt($scope.input_value, 10);
-            $scope.value_when_change_base = num;
-            $scope.value_in_new_base = num.toString(parseInt($scope.new_base , 10));
-            //treat value as base = radix , and return decimal
-        }
-        catch(err){
-            $scope.input_value = err;
-        }
-        finally{
-            $scope.debugging_text = "In TO BIN";
-            console.log("WAAAAAAAAAA");
-        }
-    }
-*/
+
     $scope.clear = function() {
         try
         {
