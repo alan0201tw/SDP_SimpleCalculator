@@ -20,10 +20,10 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
             var num = parseInt($scope.input_value, 10);
             if(num > 0 && $scope.input_value != null)
             {
-            $scope.hex = num.toString(parseInt($scope.new_base , 16));
-            $scope.dec = num.toString(parseInt($scope.new_base , 10));
-            $scope.oct = num.toString(parseInt($scope.new_base , 8));
-            $scope.bin = num.toString(parseInt($scope.new_base , 2));
+                $scope.hex = num.toString(parseInt($scope.new_base , 16));
+                $scope.dec = num.toString(parseInt($scope.new_base , 10));
+                $scope.oct = num.toString(parseInt($scope.new_base , 8));
+                $scope.bin = num.toString(parseInt($scope.new_base , 2));
             }
             else
             {
@@ -51,11 +51,11 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
 
     $scope.input_num = function (number) {
         if($scope.input_value == null || parseInt($scope.input_value, 10) == 0)
-            $scope.input_value = "";
+        $scope.input_value = "";
         if(number < 10)
-            $scope.input_value += String(number);
+        $scope.input_value += String(number);
         else
-            $scope.input_value += ".";
+        $scope.input_value += ".";
 
         $scope.on_input_change();
     }
@@ -109,6 +109,34 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
         {
             $scope.input_value = 0;
             $scope.on_input_change();
+        }
+        catch(err)
+        {
+            $scope.input_value = err;
+        }
+    }
+
+    $scope.remove_current_input = function() {
+        try
+        {
+            var state = 0; // 1 for number , 2 for operator
+            //$scope.debugging_text = $scope.input_value[$scope.input_value.length-1];
+            if( !isNaN( parseInt($scope.input_value[$scope.input_value.length - 1], 10) ) ) // Not a number
+            state = 1;
+            else
+            state = 2;
+
+
+            if(state == 1)
+            {
+                while( !isNaN( parseInt($scope.input_value[$scope.input_value.length - 1], 10) ) )
+                    $scope.input_value = $scope.input_value.slice(0, -1);
+            }
+            else if (state == 2)
+            {
+                $scope.input_value = $scope.input_value.slice(0, -1);
+            }
+
         }
         catch(err)
         {
