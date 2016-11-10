@@ -113,16 +113,16 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
             if($scope.new_base == 16){
                 for (var i = 0, len = $scope.input_value.length; i < len; i++) {
                     console.log($scope.input_value);
-                    if(i == 0 || $scope.input_value[i] == '+' || $scope.input_value[i] == '-' || $scope.input_value[i] == '*' || $scope.input_value[i] == '/' || $scope.input_value[i] == '%'){
+                    if(i == 0 || $scope.input_value[i-1] == '+' || $scope.input_value[i-1] == '-' || $scope.input_value[i-1] == '*' || $scope.input_value[i-1] == '/' || $scope.input_value[i-1] == '%'){
+                        console.log("detected at " + i.toString(10));
                         $scope.input_value = $scope.input_value.splice(i, "0x");
                         len = $scope.input_value.length;
-                        i+=4;
-                        console.log("detected at" + i.toString(10));
+                        i+=3;
                     }
                 }
                 //console.log("in 16");
             }
-            //console.log($scope.input_value);
+            console.log($scope.input_value);
             $scope.input_value = String(eval($scope.input_value));
         }
         catch(err) {
