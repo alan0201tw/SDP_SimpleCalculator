@@ -109,7 +109,20 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
     }
     $scope.calculate = function() {
         try{
-            var A=10 , B=11 , C=12 , D=13 , E=14 , F=15;
+            //console.log("foo baz".splice(4, "woo")); foo woobaz
+            if($scope.new_base == 16){
+                for (var i = 0, len = $scope.input_value.length; i < len; i++) {
+                    console.log($scope.input_value);
+                    if(i == 0 || $scope.input_value[i] == '+' || $scope.input_value[i] == '-' || $scope.input_value[i] == '*' || $scope.input_value[i] == '/' || $scope.input_value[i] == '%'){
+                        $scope.input_value = $scope.input_value.splice(i, "0x");
+                        len = $scope.input_value.length;
+                        i+=4;
+                        console.log("detected at" + i.toString(10));
+                    }
+                }
+                //console.log("in 16");
+            }
+            //console.log($scope.input_value);
             $scope.input_value = String(eval($scope.input_value));
         }
         catch(err) {
@@ -175,3 +188,7 @@ app.config(function($mdThemingProvider) {
         '50': 'ffffff'
     });
 });
+
+String.prototype.splice = function(idx, str) {
+    return this.slice(0, idx) + str + this.slice(idx);
+};
