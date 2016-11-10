@@ -43,8 +43,8 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
 
                     <!-- Debug Space -->
 
-                    <label>DEBUG TEXT : {{debugging_text}} </label>
-
+                    <!--<label>DEBUG TEXT : {{debugging_text}} </label>-->
+                    <label>WARNING TEXT : {{warning_text}} </label>
                     <!-- END of Debug Space -->
 
 
@@ -52,40 +52,42 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
                         <div layout = "row" flex-gt-sm>
                             <md-input-container>
                                 <label>Value</label>
-                                <input ng-change="on_input_change()" ng-model="input_value" type="text"
-                                onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                                </input>
-                            </md-input-container>
+                                <input ng-change="on_input_change()" ng-model="input_value" type="text">
+                            </input>
+                        </md-input-container>
 
                         <md-button class="md-raised md-primary forcebutton" ng-click="clear()">
                             Clear
                         </md-button>
-                        </div>
-                        <div layout = "row" flex-gt-sm>
-                            <div layout = "column" flex-gt-sm>
+                    </div>
+                    <div layout = "row" flex-gt-sm>
+                        <div layout = "column" flex-gt-sm>
                             <label>HEX {{hex}}</label>
                             <label>DEC {{dec}}</label>
                             <label>OCT {{oct}}</label>
                             <label>BIN {{bin}}</label>
                         </div>
-                        </div>
+                    </div>
                 </div>
 
                 <div layout = "column">
-                    <div layout = "row">
-                        <md-button class="md-raised md-primary" >A</md-button>
-                        <md-button class="md-raised md-primary" >B</md-button>
-                        <md-button class="md-raised md-primary" >C</md-button>
-                        <md-button class="md-raised md-primary" >D</md-button>
-                        <md-button class="md-raised md-primary" >E</md-button>
-                        <md-button class="md-raised md-primary" >E</md-button>
-                    </div>
 
                     <div layout = "row">
                         <md-button class="md-raised md-primary" ng-click="remove_current_input()">CE</md-button>
                         <md-button class="md-raised md-primary" ng-click="clear()">C</md-button>
                         <md-button class="md-raised md-primary" ng-click="back()"><</md-button>
                         <md-button class="md-raised md-primary" ng-click="add_operator(4)">%</md-button>
+                    </div>
+
+                    <div layout = "row">
+                        <md-button class="md-raised" ng-click="input_num(10)">A</md-button>
+                        <md-button class="md-raised" ng-click="input_num(11)">B</md-button>
+                        <md-button class="md-raised" ng-click="input_num(12)">C</md-button>
+                    </div>
+                    <div layout = "row">
+                        <md-button class="md-raised" ng-click="input_num(13)">D</md-button>
+                        <md-button class="md-raised" ng-click="input_num(14)">E</md-button>
+                        <md-button class="md-raised" ng-click="input_num(15)">F</md-button>
                     </div>
 
                     <div layout = "row">
@@ -111,7 +113,7 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
 
                     <div layout = "row">
                         <md-button class="md-raised widebutton" ng-click="input_num(0)">0</md-button>
-                        <md-button class="md-raised" ng-click="input_num(10)">.</md-button>
+                        <md-button class="md-raised" ng-click="input_num(100)">.</md-button>
                         <md-button class="md-raised md-primary" ng-click="add_operator(0)">+</md-button>
                         <md-button class="md-raised md-primary" ng-click="calculate()">=</md-button>
                     </div>

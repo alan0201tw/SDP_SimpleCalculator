@@ -12,18 +12,20 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
     $scope.new_base = 10;
 
     $scope.debugging_text = "No text";
+    $scope.warning_text = "";
 
     $scope.on_input_change = function() {
         try
         {
-            console.log("lalalala");
-            var num = parseInt($scope.input_value, 10);
+            //console.log("lalalala");
+            var num = parseInt($scope.input_value, $scope.new_base);
+            //console.log(num);
             if(num > 0 && $scope.input_value != null)
             {
-                $scope.hex = num.toString(parseInt($scope.new_base , 16));
-                $scope.dec = num.toString(parseInt($scope.new_base , 10));
-                $scope.oct = num.toString(parseInt($scope.new_base , 8));
-                $scope.bin = num.toString(parseInt($scope.new_base , 2));
+                $scope.hex = num.toString(parseInt(10 , 16));
+                $scope.dec = num.toString(parseInt(10 , 10));
+                $scope.oct = num.toString(parseInt(10 , 8));
+                $scope.bin = num.toString(parseInt(10 , 2));
             }
             else
             {
@@ -31,6 +33,15 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
                 $scope.dec = "0";
                 $scope.oct = "0";
                 $scope.bin = "0";
+            }
+
+            if( /[A-Fa-f]/.test($scope.input_value) ) {
+                $scope.warning_text = "Currently in hexidecimal mode";
+                $scope.new_base = 16;
+            }
+            else {
+                $scope.warning_text = "Currently in decimal mode";
+                $scope.new_base = 10;
             }
         }
         catch(err)
@@ -54,8 +65,10 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
         $scope.input_value = "";
         if(number < 10)
         $scope.input_value += String(number);
-        else
+        else if(number == 100)
         $scope.input_value += ".";
+        else if(number < 16 && number >= 10)
+        $scope.input_value += String.fromCharCode(65+number-10);
 
         $scope.on_input_change();
     }
@@ -96,6 +109,7 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
     }
     $scope.calculate = function() {
         try{
+            var A=10 , B=11 , C=12 , D=13 , E=14 , F=15;
             $scope.input_value = String(eval($scope.input_value));
         }
         catch(err) {
@@ -126,11 +140,10 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
             else
             state = 2;
 
-
             if(state == 1)
             {
                 while( !isNaN( parseInt($scope.input_value[$scope.input_value.length - 1], 10) ) )
-                    $scope.input_value = $scope.input_value.slice(0, -1);
+                $scope.input_value = $scope.input_value.slice(0, -1);
             }
             else if (state == 2)
             {
