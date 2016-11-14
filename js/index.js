@@ -64,6 +64,9 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
     }
 
     $scope.input_num = function (number) {
+        if(number >= $scope.new_base)
+            return;
+
         if($scope.input_value == null || parseInt($scope.input_value, 10) == 0)
         $scope.input_value = "";
         if(number < 10)
