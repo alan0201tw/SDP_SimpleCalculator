@@ -43,7 +43,7 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
 
                     <!-- Debug Space -->
 
-                    <!--<label>DEBUG TEXT : {{debugging_text}} </label>-->
+                    <label>DEBUG TEXT : {{debugging_text}} </label>
                     <label>WARNING TEXT : {{warning_text}} </label>
                     <!-- END of Debug Space -->
 
@@ -62,10 +62,10 @@ github project : https://github.com/alan0201tw/SDP_SimpleCalculator
                     </div>
                     <div layout = "row" flex-gt-sm>
                         <div layout = "column" flex-gt-sm>
-                            <label>HEX {{hex}}</label>
-                            <label>DEC {{dec}}</label>
-                            <label>OCT {{oct}}</label>
-                            <label>BIN {{bin}}</label>
+                            <label ng-click="change_base(16)">HEX {{hex}}</label>
+                            <label ng-click="change_base(10)">DEC {{dec}}</label>
+                            <label ng-click="change_base(8)">OCT {{oct}}</label>
+                            <label ng-click="change_base(2)">BIN {{bin}}</label>
                         </div>
                     </div>
                 </div>

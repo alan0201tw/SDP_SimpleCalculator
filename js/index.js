@@ -22,10 +22,10 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
             //console.log(num);
             if(num > 0 && $scope.input_value != null)
             {
-                $scope.hex = num.toString(parseInt(10 , 16));
-                $scope.dec = num.toString(parseInt(10 , 10));
-                $scope.oct = num.toString(parseInt(10 , 8));
-                $scope.bin = num.toString(parseInt(10 , 2));
+                $scope.hex = num.toString(16);
+                $scope.dec = num.toString(10);
+                $scope.oct = num.toString(8);
+                $scope.bin = num.toString(2);
             }
             else
             {
@@ -34,7 +34,7 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
                 $scope.oct = "0";
                 $scope.bin = "0";
             }
-
+/*
             if( /[A-Fa-f]/.test($scope.input_value) ) {
                 $scope.warning_text = "Currently in hexidecimal mode";
                 $scope.new_base = 16;
@@ -43,6 +43,16 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
                 $scope.warning_text = "Currently in decimal mode";
                 $scope.new_base = 10;
             }
+*/
+            if($scope.new_base == 10)
+                $scope.warning_text = "Currently in decimal mode";
+            if($scope.new_base == 2)
+                $scope.warning_text = "Currently in binary mode";
+            if($scope.new_base == 8)
+                $scope.warning_text = "Currently in octimal mode";
+            if($scope.new_base == 16)
+                $scope.warning_text = "Currently in hexidecimal mode";
+
         }
         catch(err)
         {
@@ -107,6 +117,7 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
             console.log(err);
         }
     }
+// =
     $scope.calculate = function() {
         try{
             //console.log("foo baz".splice(4, "woo")); foo woobaz
@@ -120,17 +131,38 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
                         i+=3;
                     }
                 }
-                //console.log("in 16");
+            }
+            if($scope.new_base == 8){
+                for (var i = 0, len = $scope.input_value.length; i < len; i++) {
+                    console.log($scope.input_value);
+                    if(i == 0 || $scope.input_value[i-1] == '+' || $scope.input_value[i-1] == '-' || $scope.input_value[i-1] == '*' || $scope.input_value[i-1] == '/' || $scope.input_value[i-1] == '%'){
+                        console.log("detected at " + i.toString(10));
+                        $scope.input_value = $scope.input_value.splice(i, "0o");
+                        len = $scope.input_value.length;
+                        i+=3;
+                    }
+                }
+            }
+            if($scope.new_base == 2){
+                for (var i = 0, len = $scope.input_value.length; i < len; i++) {
+                    console.log($scope.input_value);
+                    if(i == 0 || $scope.input_value[i-1] == '+' || $scope.input_value[i-1] == '-' || $scope.input_value[i-1] == '*' || $scope.input_value[i-1] == '/' || $scope.input_value[i-1] == '%'){
+                        console.log("detected at " + i.toString(10));
+                        $scope.input_value = $scope.input_value.splice(i, "0b");
+                        len = $scope.input_value.length;
+                        i+=3;
+                    }
+                }
             }
             console.log($scope.input_value);
-            $scope.input_value = String(eval($scope.input_value));
+            $scope.input_value = parseInt(String(eval($scope.input_value)) , $scope.new_base);
         }
         catch(err) {
             $scope.input_value = err;
         }
         $scope.on_input_change();
     }
-
+//C
     $scope.clear = function() {
         try
         {
@@ -142,7 +174,7 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
             $scope.input_value = err;
         }
     }
-
+//CE
     $scope.remove_current_input = function() {
         try
         {
@@ -169,9 +201,22 @@ app.controller('SelectedTextController',['$scope','$http', function($scope , $ht
             $scope.input_value = err;
         }
     }
-
+//<-
     $scope.back = function() {
         $scope.input_value = $scope.input_value.slice(0, -1);
+        $scope.on_input_change();
+    }
+
+// tags
+    $scope.change_base = function(next_base) {
+        if($scope.new_base == next_base)
+            return;
+
+        $scope.calculate();
+        //$scope.debugging_text = $scope.new_base + " " + next_base;
+        var num = parseInt($scope.input_value, $scope.new_base);
+        $scope.input_value = num.toString(parseInt($scope.new_base , next_base));
+        $scope.new_base = next_base;
         $scope.on_input_change();
     }
 
